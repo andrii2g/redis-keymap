@@ -1,0 +1,55 @@
+{
+  "$schema": "../schemas/redis-keymap-config.schema.json",
+  "delimiter": ":",
+  "normalization": {
+    "customRules": [
+      {
+        "name": "tenant-id",
+        "pattern": "^tenant-[0-9]+$",
+        "replacement": "{tenant-id}",
+        "ignoreCase": false
+      }
+    ],
+    "logicalTree": {
+      "collapseMarkers": [
+        "{id}",
+        "{uuid}",
+        "{ulid}",
+        "{hex}",
+        "{token}",
+        "{binary}",
+        "{tenant-id}"
+      ]
+    }
+  },
+  "analysis": {
+    "duplicateHandling": "hash64",
+    "maximumDepth": 6,
+    "maximumNamespaces": 30,
+    "maximumPatterns": 10000
+  },
+  "privacy": {
+    "exampleMode": "masked",
+    "examplesPerPattern": 3,
+    "hideEndpoints": false
+  },
+  "report": {
+    "showTreeCounts": true,
+    "maximumTreeDepth": 20,
+    "maximumPatternRows": 1000
+  },
+  "policies": {
+    "failOnIncompleteScan": true,
+    "failOnNewPatterns": false,
+    "failOnRemovedPatterns": false,
+    "failOnNewNamespaces": false,
+    "failOnRemovedNamespaces": false,
+    "failOnNewErrors": true,
+    "maximumAllowedDepth": 6,
+    "maximumAllowedNamespaces": 30,
+    "maximumPatternIncreasePercent": null,
+    "allowedPatterns": [],
+    "ignoredPatterns": []
+  }
+}
+

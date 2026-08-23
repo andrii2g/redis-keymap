@@ -1,0 +1,16 @@
+user:123
+user:123:orders
+user:123:tokens
+user:123:sessions
+user:456
+user:456:orders
+user:456:tokens
+product:987
+product:987:stock
+product:987:price
+session:abc123xyz987token
+job:550e8400-e29b-41d4-a716-446655440000:state
+job:550e8400-e29b-41d4-a716-446655440000:result
+cache:homepage
+cache:product:987
+

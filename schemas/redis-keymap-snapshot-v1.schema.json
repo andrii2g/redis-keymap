@@ -1,0 +1,380 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/andrii2g/redis-keymap/schemas/redis-keymap-snapshot-v1.schema.json",
+  "title": "Redis KeyMap snapshot v1",
+  "description": "Canonical Redis KeyMap structural snapshot.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "toolVersion",
+    "generatedAtUtc",
+    "configurationFingerprint",
+    "source",
+    "scan",
+    "totalKeys",
+    "uniquePatterns",
+    "namespaceCount",
+    "maximumDepth",
+    "namespaces",
+    "patterns",
+    "technicalTree",
+    "logicalTree",
+    "findings",
+    "recommendations"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1,
+      "description": "Snapshot schema version."
+    },
+    "toolVersion": {
+      "type": "string",
+      "description": "Generating tool version."
+    },
+    "generatedAtUtc": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC generation time."
+    },
+    "configurationFingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "Normalization fingerprint."
+    },
+    "source": {
+      "$ref": "#/$defs/source",
+      "description": "Sanitized source identity."
+    },
+    "scan": {
+      "$ref": "#/$defs/scan",
+      "description": "Completeness and counters."
+    },
+    "totalKeys": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Accepted key count."
+    },
+    "uniquePatterns": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Unique pattern count."
+    },
+    "namespaceCount": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Top-level namespace count."
+    },
+    "maximumDepth": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Maximum key depth."
+    },
+    "namespaces": {
+      "type": "array",
+      "description": "Deterministically ordered namespace aggregates.",
+      "items": {
+        "$ref": "#/$defs/namespace"
+      }
+    },
+    "patterns": {
+      "type": "array",
+      "description": "Deterministically ordered pattern aggregates.",
+      "items": {
+        "$ref": "#/$defs/pattern"
+      }
+    },
+    "technicalTree": {
+      "type": "array",
+      "description": "Technical tree roots.",
+      "items": {
+        "$ref": "#/$defs/tree"
+      }
+    },
+    "logicalTree": {
+      "type": "array",
+      "description": "Logical tree roots.",
+      "items": {
+        "$ref": "#/$defs/tree"
+      }
+    },
+    "findings": {
+      "type": "array",
+      "description": "Deterministically ordered findings.",
+      "items": {
+        "$ref": "#/$defs/finding"
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "description": "Ordered deduplicated recommendations.",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "containsRawExamples"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "redis",
+            "textFile"
+          ],
+          "description": "Source kind."
+        },
+        "database": {
+          "type": "integer",
+          "description": "Redis database index."
+        },
+        "match": {
+          "type": "string",
+          "description": "Redis match glob."
+        },
+        "sourceLabel": {
+          "type": "string",
+          "description": "Optional safe label."
+        },
+        "containsRawExamples": {
+          "type": "boolean",
+          "description": "Whether examples are raw."
+        }
+      }
+    },
+    "scan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "startedAtUtc",
+        "completedAtUtc",
+        "durationMilliseconds",
+        "observedItems",
+        "acceptedUniqueItems",
+        "duplicateItemsIgnored",
+        "invalidItemsIgnored",
+        "wasLimited",
+        "wasCancelled",
+        "isComplete",
+        "duplicateHandling",
+        "endpoints",
+        "warnings"
+      ],
+      "properties": {
+        "startedAtUtc": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start time."
+        },
+        "completedAtUtc": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Completion time."
+        },
+        "durationMilliseconds": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Duration."
+        },
+        "observedItems": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Observed items."
+        },
+        "acceptedUniqueItems": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Accepted items."
+        },
+        "duplicateItemsIgnored": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Ignored duplicates."
+        },
+        "invalidItemsIgnored": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Ignored invalid items."
+        },
+        "wasLimited": {
+          "type": "boolean",
+          "description": "Stopped at limit."
+        },
+        "wasCancelled": {
+          "type": "boolean",
+          "description": "Was cancelled."
+        },
+        "isComplete": {
+          "type": "boolean",
+          "description": "Cursor/source completed."
+        },
+        "duplicateHandling": {
+          "enum": [
+            "none",
+            "hash64",
+            "exact"
+          ],
+          "description": "Deduplication mode."
+        },
+        "endpoints": {
+          "type": "array",
+          "description": "Sanitized endpoints.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "description": "Scan warnings.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "namespace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "count"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Namespace name."
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Key count."
+        }
+      }
+    },
+    "pattern": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "count",
+        "segmentCount",
+        "examples",
+        "hasEmptySegment",
+        "hasBinaryData",
+        "hasHeuristicSegment"
+      ],
+      "properties": {
+        "pattern": {
+          "type": "string",
+          "description": "Normalized pattern."
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Pattern count."
+        },
+        "segmentCount": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Segment count."
+        },
+        "examples": {
+          "type": "array",
+          "description": "Sanitized examples.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "hasEmptySegment": {
+          "type": "boolean",
+          "description": "Contains empty segment."
+        },
+        "hasBinaryData": {
+          "type": "boolean",
+          "description": "Contains binary key."
+        },
+        "hasHeuristicSegment": {
+          "type": "boolean",
+          "description": "Contains heuristic marker."
+        }
+      }
+    },
+    "tree": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "count",
+        "terminalCount",
+        "children"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Tree node label."
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Through count."
+        },
+        "terminalCount": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Terminal count."
+        },
+        "children": {
+          "type": "array",
+          "description": "Ordinally sorted children.",
+          "items": {
+            "$ref": "#/$defs/tree"
+          }
+        }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ruleId",
+        "severity",
+        "message",
+        "evidence"
+      ],
+      "properties": {
+        "ruleId": {
+          "type": "string",
+          "description": "Stable RKM identifier."
+        },
+        "severity": {
+          "enum": [
+            "info",
+            "warning",
+            "error"
+          ],
+          "description": "Finding severity."
+        },
+        "message": {
+          "type": "string",
+          "description": "Safe finding message."
+        },
+        "pattern": {
+          "type": "string",
+          "description": "Optional normalized pattern."
+        },
+        "evidence": {
+          "type": "object",
+          "description": "Safe deterministic evidence.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

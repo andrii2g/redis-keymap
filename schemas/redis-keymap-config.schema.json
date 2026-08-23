@@ -1,0 +1,223 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/andrii2g/redis-keymap/schemas/redis-keymap-config.schema.json",
+  "title": "Redis KeyMap configuration",
+  "description": "Configuration schema for Redis KeyMap v1.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Optional editor schema reference."
+    },
+    "delimiter": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 16,
+      "default": ":",
+      "description": "Ordinal key-segment delimiter."
+    },
+    "normalization": {
+      "type": "object",
+      "description": "Pattern normalization settings.",
+      "additionalProperties": false,
+      "properties": {
+        "customRules": {
+          "type": "array",
+          "description": "Ordered custom regex rules; first match wins.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "pattern",
+              "replacement"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Unique rule name."
+              },
+              "pattern": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Regular expression."
+              },
+              "replacement": {
+                "type": "string",
+                "pattern": "^\\{[a-z][a-z0-9-]*\\}$",
+                "description": "Normalized marker."
+              },
+              "ignoreCase": {
+                "type": "boolean",
+                "default": false,
+                "description": "Use ordinal invariant ignore-case matching."
+              }
+            }
+          }
+        },
+        "logicalTree": {
+          "type": "object",
+          "description": "Logical-tree collapse settings.",
+          "additionalProperties": false,
+          "properties": {
+            "collapseMarkers": {
+              "type": "array",
+              "description": "Markers omitted from logical paths.",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            }
+          }
+        }
+      }
+    },
+    "analysis": {
+      "type": "object",
+      "description": "Aggregation and finding thresholds.",
+      "additionalProperties": false,
+      "properties": {
+        "duplicateHandling": {
+          "enum": [
+            "none",
+            "hash64",
+            "exact"
+          ],
+          "description": "Duplicate observation mode."
+        },
+        "maximumDepth": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Depth finding threshold."
+        },
+        "maximumNamespaces": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Namespace finding threshold."
+        },
+        "maximumPatterns": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Pattern finding threshold."
+        }
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "description": "Snapshot example and endpoint privacy.",
+      "additionalProperties": false,
+      "properties": {
+        "exampleMode": {
+          "enum": [
+            "masked",
+            "none",
+            "raw"
+          ],
+          "description": "Example persistence mode."
+        },
+        "examplesPerPattern": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 20,
+          "description": "Maximum unique examples per pattern."
+        },
+        "maskStaticSegments": {
+          "type": "boolean",
+          "description": "Mask static example segments."
+        },
+        "hideEndpoints": {
+          "type": "boolean",
+          "description": "Fingerprint endpoints in metadata."
+        }
+      }
+    },
+    "report": {
+      "type": "object",
+      "description": "Markdown formatting limits.",
+      "additionalProperties": false,
+      "properties": {
+        "showTreeCounts": {
+          "type": "boolean",
+          "description": "Render tree counts."
+        },
+        "maximumTreeDepth": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Maximum rendered tree depth."
+        },
+        "maximumPatternRows": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Maximum rendered pattern rows."
+        }
+      }
+    },
+    "policies": {
+      "type": "object",
+      "description": "CI policy options for RKP001-RKP008.",
+      "additionalProperties": false,
+      "properties": {
+        "failOnIncompleteScan": {
+          "type": "boolean",
+          "description": "Fail incomplete current scans."
+        },
+        "failOnNewPatterns": {
+          "type": "boolean",
+          "description": "Fail unexpected added patterns."
+        },
+        "failOnRemovedPatterns": {
+          "type": "boolean",
+          "description": "Fail removed patterns."
+        },
+        "failOnNewNamespaces": {
+          "type": "boolean",
+          "description": "Fail added namespaces."
+        },
+        "failOnRemovedNamespaces": {
+          "type": "boolean",
+          "description": "Fail removed namespaces."
+        },
+        "failOnNewErrors": {
+          "type": "boolean",
+          "description": "Fail new Error findings."
+        },
+        "maximumAllowedDepth": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Allowed maximum depth."
+        },
+        "maximumAllowedNamespaces": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Allowed namespace count."
+        },
+        "maximumPatternIncreasePercent": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "description": "Allowed per-pattern growth percent."
+        },
+        "allowedPatterns": {
+          "type": "array",
+          "uniqueItems": true,
+          "description": "Exact added-pattern allow list.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ignoredPatterns": {
+          "type": "array",
+          "uniqueItems": true,
+          "description": "Exact pattern policy ignore list.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

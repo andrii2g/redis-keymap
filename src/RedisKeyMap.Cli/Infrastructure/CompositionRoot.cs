@@ -13,6 +13,9 @@ public static class CompositionRoot
     public static RenderSnapshotUseCase Render(AppConfiguration configuration) =>
         new(new SnapshotJsonReader(), new MarkdownReportWriter(configuration.Report.MaximumPatternRows, configuration.Report.ShowTreeCounts, configuration.Report.MaximumTreeDepth));
 
+    public static ScanRedisUseCase Scan(AppConfiguration configuration, string version) =>
+        new(new SnapshotJsonWriter(), new MarkdownReportWriter(configuration.Report.MaximumPatternRows, configuration.Report.ShowTreeCounts, configuration.Report.MaximumTreeDepth), EnvironmentValueReader.TimeProvider(), version);
+
     public static DiffSnapshotsUseCase Diff() => new(new SnapshotJsonReader(), new MarkdownDiffReportWriter());
     public static CheckSnapshotsUseCase Check() => new(new SnapshotJsonReader(), new MarkdownDiffReportWriter());
 }

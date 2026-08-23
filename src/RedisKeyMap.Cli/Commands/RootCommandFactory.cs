@@ -27,7 +27,7 @@ public static class RootCommandFactory
         root.Subcommands.Add(CreateRender(configOption, quietOption, verboseOption));
         root.Subcommands.Add(CreateDiff(configOption, quietOption, verboseOption));
         root.Subcommands.Add(CreateCheck(configOption, quietOption, verboseOption));
-        root.Subcommands.Add(ScanCommand.Create());
+        root.Subcommands.Add(ScanCommand.Create(configOption, quietOption, verboseOption));
         root.SetAction(parseResult =>
         {
             Console.WriteLine($"Redis KeyMap {Version}");

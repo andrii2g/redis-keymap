@@ -1,5 +1,6 @@
 using System.CommandLine;
 using System.CommandLine.Parsing;
+using System.Globalization;
 using RedisKeyMap.Cli.Commands;
 using RedisKeyMap.Cli.Infrastructure;
 
@@ -14,4 +15,16 @@ if (parseResult.Errors.Count > 0)
     return ExitCodes.UsageError;
 }
 
-return await parseResult.InvokeAsync(new InvocationConfiguration());
+InvocationConfiguration invocation = new();
+StringWriter? redirectedOutput = null;
+if (Console.IsOutputRedirected)
+{
+    redirectedOutput = new(CultureInfo.InvariantCulture);
+    invocation.Output = redirectedOutput;
+}
+int exitCode = await parseResult.InvokeAsync(invocation);
+if (redirectedOutput is not null)
+{
+    Console.Out.Write(TerminalCapabilities.StripAnsi(redirectedOutput.ToString()));
+}
+return exitCode;

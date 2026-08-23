@@ -114,7 +114,7 @@ public static class ScanCommand
                 string snapshotPath = parse.GetValue(snapshot) ?? "redis-keymap.snapshot.json";
                 string reportPath = parse.GetValue(report) ?? "redis-keymap.report.md";
                 await using RedisKeySource source = await RedisKeySource.ConnectAsync(exactSecret, new(effectiveDatabase, effectiveMatch, effectivePageSize), timeoutSource.Token).ConfigureAwait(false);
-                ScanRequest request = new(exactSecret, effectiveDatabase, effectiveMatch, effectivePageSize, snapshotPath, reportPath, parse.GetValue(maxKeys), parse.GetValue(sourceLabel));
+                ScanRequest request = new(effectiveDatabase, effectiveMatch, effectivePageSize, snapshotPath, reportPath, parse.GetValue(maxKeys), parse.GetValue(sourceLabel));
                 var result = await CompositionRoot.Scan(configuration, RootCommandFactory.Version).ExecuteAsync(source, request, configuration, timeoutSource.Token).ConfigureAwait(false);
                 if (!parse.GetValue(quietOption) && result.Snapshot is not null)
                 {

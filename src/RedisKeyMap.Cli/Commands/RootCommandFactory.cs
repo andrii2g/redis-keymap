@@ -15,10 +15,10 @@ public static class RootCommandFactory
     public static RootCommand Create()
     {
         RootCommand root = new("Map a Redis keyspace, create sanitized snapshots, and detect schema drift.");
-        Option<string?> configOption = new("--config");
-        Option<bool> quietOption = new("--quiet");
-        Option<bool> verboseOption = new("--verbose");
-        Option<bool> noColorOption = new("--no-color");
+        Option<string?> configOption = new("--config") { Recursive = true };
+        Option<bool> quietOption = new("--quiet") { Recursive = true };
+        Option<bool> verboseOption = new("--verbose") { Recursive = true };
+        Option<bool> noColorOption = new("--no-color") { Recursive = true };
         root.Options.Add(configOption);
         root.Options.Add(quietOption);
         root.Options.Add(verboseOption);

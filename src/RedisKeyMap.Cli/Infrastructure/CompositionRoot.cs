@@ -8,7 +8,7 @@ namespace RedisKeyMap.Cli.Infrastructure;
 public static class CompositionRoot
 {
     public static AnalyzeFileUseCase Analyze(AppConfiguration configuration, string version) =>
-        new(new SnapshotJsonWriter(), new MarkdownReportWriter(configuration.Report.MaximumPatternRows, configuration.Report.ShowTreeCounts, configuration.Report.MaximumTreeDepth), TimeProvider.System, version);
+        new(new SnapshotJsonWriter(), new MarkdownReportWriter(configuration.Report.MaximumPatternRows, configuration.Report.ShowTreeCounts, configuration.Report.MaximumTreeDepth), EnvironmentValueReader.TimeProvider(), version);
 
     public static RenderSnapshotUseCase Render(AppConfiguration configuration) =>
         new(new SnapshotJsonReader(), new MarkdownReportWriter(configuration.Report.MaximumPatternRows, configuration.Report.ShowTreeCounts, configuration.Report.MaximumTreeDepth));

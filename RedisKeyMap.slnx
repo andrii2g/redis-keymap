@@ -1,2 +1,19 @@
 <Solution>
+  <Folder Name="/benchmarks/">
+    <Project Path="benchmarks/RedisKeyMap.Benchmarks/RedisKeyMap.Benchmarks.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/RedisKeyMap.Application/RedisKeyMap.Application.csproj" />
+    <Project Path="src/RedisKeyMap.Cli/RedisKeyMap.Cli.csproj" />
+    <Project Path="src/RedisKeyMap.Core/RedisKeyMap.Core.csproj" />
+    <Project Path="src/RedisKeyMap.Redis/RedisKeyMap.Redis.csproj" />
+    <Project Path="src/RedisKeyMap.Reporting/RedisKeyMap.Reporting.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/RedisKeyMap.Application.Tests/RedisKeyMap.Application.Tests.csproj" />
+    <Project Path="tests/RedisKeyMap.Cli.Tests/RedisKeyMap.Cli.Tests.csproj" />
+    <Project Path="tests/RedisKeyMap.Core.Tests/RedisKeyMap.Core.Tests.csproj" />
+    <Project Path="tests/RedisKeyMap.Redis.Tests/RedisKeyMap.Redis.Tests.csproj" />
+    <Project Path="tests/RedisKeyMap.Reporting.Tests/RedisKeyMap.Reporting.Tests.csproj" />
+  </Folder>
 </Solution>

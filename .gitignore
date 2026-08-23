@@ -1,0 +1,13 @@
+bin/
+obj/
+artifacts/
+TestResults/
+BenchmarkDotNet.Artifacts/
+*.user
+*.suo
+.idea/
+.vs/
+PLAN.md
+redis-keymap.snapshot.json
+redis-keymap.report.md
+redis-keymap.diff.md

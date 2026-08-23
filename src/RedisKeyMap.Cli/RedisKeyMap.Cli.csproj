@@ -1,10 +1,32 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net10.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <AssemblyName>redis-keymap</AssemblyName>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>redis-keymap</ToolCommandName>
+    <PackageId>RedisKeyMap.Tool</PackageId>
+    <PackageOutputPath>../../artifacts/packages</PackageOutputPath>
+    <Description>Map a Redis keyspace, create sanitized snapshots, and detect schema drift.</Description>
+    <PackageTags>redis;cli;schema;architecture;devops</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <IsAotCompatible>true</IsAotCompatible>
+    <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+    <EnableAotAnalyzer>true</EnableAotAnalyzer>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
   </PropertyGroup>
-
+  <ItemGroup>
+    <ProjectReference Include="..\RedisKeyMap.Core\RedisKeyMap.Core.csproj" />
+    <ProjectReference Include="..\RedisKeyMap.Application\RedisKeyMap.Application.csproj" />
+    <ProjectReference Include="..\RedisKeyMap.Redis\RedisKeyMap.Redis.csproj" />
+    <ProjectReference Include="..\RedisKeyMap.Reporting\RedisKeyMap.Reporting.csproj" />
+    <PackageReference Include="System.CommandLine" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 </Project>

@@ -40,7 +40,7 @@
   },
   "policies": {
     "failOnIncompleteScan": true,
-    "failOnNewPatterns": false,
+    "failOnNewPatterns": true,
     "failOnRemovedPatterns": false,
     "failOnNewNamespaces": false,
     "failOnRemovedNamespaces": false,

@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "0.1.0",
+  "generatedAtUtc": "2026-01-02T00:00:00+00:00",
+  "configurationFingerprint": "3b4c9d3bda385aefefcbc6c24f3e11752a21d16ec5dee4861c209532bc00f8f4",
+  "source": {
+    "kind": "textFile",
+    "sourceLabel": "drift-example",
+    "containsRawExamples": false
+  },
+  "scan": {
+    "startedAtUtc": "2026-01-02T00:00:00+00:00",
+    "completedAtUtc": "2026-01-02T00:00:00+00:00",
+    "durationMilliseconds": 0,
+    "observedItems": 5,
+    "acceptedUniqueItems": 5,
+    "duplicateItemsIgnored": 0,
+    "invalidItemsIgnored": 0,
+    "wasLimited": false,
+    "wasCancelled": false,
+    "isComplete": true,
+    "duplicateHandling": "hash64",
+    "endpoints": [
+      "file"
+    ],
+    "warnings": []
+  },
+  "totalKeys": 5,
+  "uniquePatterns": 5,
+  "namespaceCount": 3,
+  "maximumDepth": 3,
+  "namespaces": [
+    {
+      "name": "user",
+      "count": 3
+    },
+    {
+      "name": "billing",
+      "count": 1
+    },
+    {
+      "name": "product",
+      "count": 1
+    }
+  ],
+  "patterns": [
+    {
+      "pattern": "billing:invoice:{id}",
+      "count": 1,
+      "segmentCount": 3,
+      "examples": [
+        "billing:invoice:{id}"
+      ],
+      "hasEmptySegment": false,
+      "hasBinaryData": false,
+      "hasHeuristicSegment": true
+    },
+    {
+      "pattern": "product:{id}",
+      "count": 1,
+      "segmentCount": 2,
+      "examples": [
+        "product:{id}"
+      ],
+      "hasEmptySegment": false,
+      "hasBinaryData": false,
+      "hasHeuristicSegment": true
+    },
+    {
+      "pattern": "user:{id}",
+      "count": 1,
+      "segmentCount": 2,
+      "examples": [
+        "user:{id}"
+      ],
+      "hasEmptySegment": false,
+      "hasBinaryData": false,
+      "hasHeuristicSegment": true
+    },
+    {
+      "pattern": "user:{id}:orders",
+      "count": 1,
+      "segmentCount": 3,
+      "examples": [
+        "user:{id}:orders"
+      ],
+      "hasEmptySegment": false,
+      "hasBinaryData": false,
+      "hasHeuristicSegment": true
+    },
+    {
+      "pattern": "user:{id}:preferences",
+      "count": 1,
+      "segmentCount": 3,
+      "examples": [
+        "user:{id}:preferences"
+      ],
+      "hasEmptySegment": false,
+      "hasBinaryData": false,
+      "hasHeuristicSegment": true
+    }
+  ],
+  "technicalTree": [
+    {
+      "name": "billing",
+      "count": 1,
+      "terminalCount": 0,
+      "children": [
+        {
+          "name": "invoice",
+          "count": 1,
+          "terminalCount": 0,
+          "children": [
+            {
+              "name": "{id}",
+              "count": 1,
+              "terminalCount": 1,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "product",
+      "count": 1,
+      "terminalCount": 0,
+      "children": [
+        {
+          "name": "{id}",
+          "count": 1,
+          "terminalCount": 1,
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "user",
+      "count": 3,
+      "terminalCount": 0,
+      "children": [
+        {
+          "name": "{id}",
+          "count": 3,
+          "terminalCount": 1,
+          "children": [
+            {
+              "name": "orders",
+              "count": 1,
+              "terminalCount": 1,
+              "children": []
+            },
+            {
+              "name": "preferences",
+              "count": 1,
+              "terminalCount": 1,
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "logicalTree": [
+    {
+      "name": "billing",
+      "count": 1,
+      "terminalCount": 0,
+      "children": [
+        {
+          "name": "invoice",
+          "count": 1,
+          "terminalCount": 1,
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "product",
+      "count": 1,
+      "terminalCount": 1,
+      "children": []
+    },
+    {
+      "name": "user",
+      "count": 3,
+      "terminalCount": 1,
+      "children": [
+        {
+          "name": "orders",
+          "count": 1,
+          "terminalCount": 1,
+          "children": []
+        },
+        {
+          "name": "preferences",
+          "count": 1,
+          "terminalCount": 1,
+          "children": []
+        }
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "ruleId": "RKM004",
+      "severity": "info",
+      "message": "Namespace contains exactly one accepted key.",
+      "pattern": "billing",
+      "evidence": {}
+    },
+    {
+      "ruleId": "RKM004",
+      "severity": "info",
+      "message": "Namespace contains exactly one accepted key.",
+      "pattern": "product",
+      "evidence": {}
+    },
+    {
+      "ruleId": "RKM005",
+      "severity": "info",
+      "message": "Pattern contains heuristic dynamic segments; confirm normalization.",
+      "pattern": "billing:invoice:{id}",
+      "evidence": {}
+    },
+    {
+      "ruleId": "RKM005",
+      "severity": "info",
+      "message": "Pattern contains heuristic dynamic segments; confirm normalization.",
+      "pattern": "product:{id}",
+      "evidence": {}
+    },
+    {
+      "ruleId": "RKM005",
+      "severity": "info",
+      "message": "Pattern contains heuristic dynamic segments; confirm normalization.",
+      "pattern": "user:{id}",
+      "evidence": {}
+    },
+    {
+      "ruleId": "RKM005",
+      "severity": "info",
+      "message": "Pattern contains heuristic dynamic segments; confirm normalization.",
+      "pattern": "user:{id}:orders",
+      "evidence": {}
+    },
+    {
+      "ruleId": "RKM005",
+      "severity": "info",
+      "message": "Pattern contains heuristic dynamic segments; confirm normalization.",
+      "pattern": "user:{id}:preferences",
+      "evidence": {}
+    },
+    {
+      "ruleId": "RKM009",
+      "severity": "info",
+      "message": "Namespace contains direct entity keys; document the stored base entity meaning.",
+      "pattern": "product:{id}",
+      "evidence": {}
+    },
+    {
+      "ruleId": "RKM009",
+      "severity": "info",
+      "message": "Namespace contains direct entity keys; document the stored base entity meaning.",
+      "pattern": "user:{id}",
+      "evidence": {}
+    }
+  ],
+  "recommendations": [
+    "Document the principal Redis key patterns in the owning application repository.",
+    "Prefer a consistent key form such as entity:{id}:resource.",
+    "Review this snapshot before Redis cleanup or naming refactors."
+  ]
+}

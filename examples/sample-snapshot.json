@@ -1,0 +1,494 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "0.1.0",
+  "generatedAtUtc": "2026-01-01T00:00:00+00:00",
+  "configurationFingerprint": "3b4c9d3bda385aefefcbc6c24f3e11752a21d16ec5dee4861c209532bc00f8f4",
+  "source": {
+    "kind": "textFile",
+    "sourceLabel": "sample",
+    "containsRawExamples": false
+  },
+  "scan": {
+    "startedAtUtc": "2026-01-01T00:00:00+00:00",
+    "completedAtUtc": "2026-01-01T00:00:00+00:00",
+    "durationMilliseconds": 0,
+    "observedItems": 15,
+    "acceptedUniqueItems": 15,
+    "duplicateItemsIgnored": 0,
+    "invalidItemsIgnored": 0,
+    "wasLimited": false,
+    "wasCancelled": false,
+    "isComplete": true,
+    "duplicateHandling": "hash64",
+    "endpoints": [
+      "file"
+    ],
+    "warnings": []
+  },
+  "totalKeys": 15,
+  "uniquePatterns": 12,
+  "namespaceCount": 5,
+  "maximumDepth": 3,
+  "namespaces": [
+    {
+      "name": "user",
+      "count": 7
+    },
+    {
+      "name": "product",
+      "count": 3
+    },
+    {
+      "name": "cache",
+      "count": 2
+    },
+    {
+      "name": "job",
+      "count": 2
+    },
+    {
+      "name": "session",
+      "count": 1
+    }
+  ],
+  "patterns": [
+    {
+      "pattern": "user:{id}",
+      "count": 2,
+      "segmentCount": 2,
+      "examples": [
+        "user:{id}"
+      ],
+      "hasEmptySegment": false,
+      "hasBinaryData": false,
+      "hasHeuristicSegment": true
+    },
+    {
+      "pattern": "user:{id}:orders",
+      "count": 2,
+      "segmentCount": 3,
+      "examples": [
+        "user:{id}:orders"
+      ],
+      "hasEmptySegment": false,
+      "hasBinaryData": false,
+      "hasHeuristicSegment": true
+    },
+    {
+      "pattern": "user:{id}:tokens",
+      "count": 2,
+      "segmentCount": 3,
+      "examples": [
+        "user:{id}:tokens"
+      ],
+      "hasEmptySegment": false,
+      "hasBinaryData": false,
+      "hasHeuristicSegment": true
+    },
+    {
+      "pattern": "cache:homepage",
+      "count": 1,
+      "segmentCount": 2,
+      "examples": [
+        "cache:homepage"
+      ],
+      "hasEmptySegment": false,
+      "hasBinaryData": false,
+      "hasHeuristicSegment": false
+    },
+    {
+      "pattern": "cache:product:{id}",
+      "count": 1,
+      "segmentCount": 3,
+      "examples": [
+        "cache:product:{id}"
+      ],
+      "hasEmptySegment": false,
+      "hasBinaryData": false,
+      "hasHeuristicSegment": true
+    },
+    {
+      "pattern": "job:{uuid}:result",
+      "count": 1,
+      "segmentCount": 3,
+      "examples": [
+        "job:{uuid}:result"
+      ],
+      "hasEmptySegment": false,
+      "hasBinaryData": false,
+      "hasHeuristicSegment": false
+    },
+    {
+      "pattern": "job:{uuid}:state",
+      "count": 1,
+      "segmentCount": 3,
+      "examples": [
+        "job:{uuid}:state"
+      ],
+      "hasEmptySegment": false,
+      "hasBinaryData": false,
+      "hasHeuristicSegment": false
+    },
+    {
+      "pattern": "product:{id}",
+      "count": 1,
+      "segmentCount": 2,
+      "examples": [
+        "product:{id}"
+      ],
+      "hasEmptySegment": false,
+      "hasBinaryData": false,
+      "hasHeuristicSegment": true
+    },
+    {
+      "pattern": "product:{id}:price",
+      "count": 1,
+      "segmentCount": 3,
+      "examples": [
+        "product:{id}:price"
+      ],
+      "hasEmptySegment": false,
+      "hasBinaryData": false,
+      "hasHeuristicSegment": true
+    },
+    {
+      "pattern": "product:{id}:stock",
+      "count": 1,
+      "segmentCount": 3,
+      "examples": [
+        "product:{id}:stock"
+      ],
+      "hasEmptySegment": false,
+      "hasBinaryData": false,
+      "hasHeuristicSegment": true
+    },
+    {
+      "pattern": "session:{token}",
+      "count": 1,
+      "segmentCount": 2,
+      "examples": [
+        "session:{token}"
+      ],
+      "hasEmptySegment": false,
+      "hasBinaryData": false,
+      "hasHeuristicSegment": true
+    },
+    {
+      "pattern": "user:{id}:sessions",
+      "count": 1,
+      "segmentCount": 3,
+      "examples": [
+        "user:{id}:sessions"
+      ],
+      "hasEmptySegment": false,
+      "hasBinaryData": false,
+      "hasHeuristicSegment": true
+    }
+  ],
+  "technicalTree": [
+    {
+      "name": "cache",
+      "count": 2,
+      "terminalCount": 0,
+      "children": [
+        {
+          "name": "homepage",
+          "count": 1,
+          "terminalCount": 1,
+          "children": []
+        },
+        {
+          "name": "product",
+          "count": 1,
+          "terminalCount": 0,
+          "children": [
+            {
+              "name": "{id}",
+              "count": 1,
+              "terminalCount": 1,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "job",
+      "count": 2,
+      "terminalCount": 0,
+      "children": [
+        {
+          "name": "{uuid}",
+          "count": 2,
+          "terminalCount": 0,
+          "children": [
+            {
+              "name": "result",
+              "count": 1,
+              "terminalCount": 1,
+              "children": []
+            },
+            {
+              "name": "state",
+              "count": 1,
+              "terminalCount": 1,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "product",
+      "count": 3,
+      "terminalCount": 0,
+      "children": [
+        {
+          "name": "{id}",
+          "count": 3,
+          "terminalCount": 1,
+          "children": [
+            {
+              "name": "price",
+              "count": 1,
+              "terminalCount": 1,
+              "children": []
+            },
+            {
+              "name": "stock",
+              "count": 1,
+              "terminalCount": 1,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "session",
+      "count": 1,
+      "terminalCount": 0,
+      "children": [
+        {
+          "name": "{token}",
+          "count": 1,
+          "terminalCount": 1,
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "user",
+      "count": 7,
+      "terminalCount": 0,
+      "children": [
+        {
+          "name": "{id}",
+          "count": 7,
+          "terminalCount": 2,
+          "children": [
+            {
+              "name": "orders",
+              "count": 2,
+              "terminalCount": 2,
+              "children": []
+            },
+            {
+              "name": "sessions",
+              "count": 1,
+              "terminalCount": 1,
+              "children": []
+            },
+            {
+              "name": "tokens",
+              "count": 2,
+              "terminalCount": 2,
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "logicalTree": [
+    {
+      "name": "cache",
+      "count": 2,
+      "terminalCount": 0,
+      "children": [
+        {
+          "name": "homepage",
+          "count": 1,
+          "terminalCount": 1,
+          "children": []
+        },
+        {
+          "name": "product",
+          "count": 1,
+          "terminalCount": 1,
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "job",
+      "count": 2,
+      "terminalCount": 0,
+      "children": [
+        {
+          "name": "result",
+          "count": 1,
+          "terminalCount": 1,
+          "children": []
+        },
+        {
+          "name": "state",
+          "count": 1,
+          "terminalCount": 1,
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "product",
+      "count": 3,
+      "terminalCount": 1,
+      "children": [
+        {
+          "name": "price",
+          "count": 1,
+          "terminalCount": 1,
+          "children": []
+        },
+        {
+          "name": "stock",
+          "count": 1,
+          "terminalCount": 1,
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "session",
+      "count": 1,
+      "terminalCount": 1,
+      "children": []
+    },
+    {
+      "name": "user",
+      "count": 7,
+      "terminalCount": 2,
+      "children": [
+        {
+          "name": "orders",
+          "count": 2,
+          "terminalCount": 2,
+          "children": []
+        },
+        {
+          "name": "sessions",
+          "count": 1,
+          "terminalCount": 1,
+          "children": []
+        },
+        {
+          "name": "tokens",
+          "count": 2,
+          "terminalCount": 2,
+          "children": []
+        }
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "ruleId": "RKM004",
+      "severity": "info",
+      "message": "Namespace contains exactly one accepted key.",
+      "pattern": "session",
+      "evidence": {}
+    },
+    {
+      "ruleId": "RKM005",
+      "severity": "info",
+      "message": "Pattern contains heuristic dynamic segments; confirm normalization.",
+      "pattern": "cache:product:{id}",
+      "evidence": {}
+    },
+    {
+      "ruleId": "RKM005",
+      "severity": "info",
+      "message": "Pattern contains heuristic dynamic segments; confirm normalization.",
+      "pattern": "product:{id}",
+      "evidence": {}
+    },
+    {
+      "ruleId": "RKM005",
+      "severity": "info",
+      "message": "Pattern contains heuristic dynamic segments; confirm normalization.",
+      "pattern": "product:{id}:price",
+      "evidence": {}
+    },
+    {
+      "ruleId": "RKM005",
+      "severity": "info",
+      "message": "Pattern contains heuristic dynamic segments; confirm normalization.",
+      "pattern": "product:{id}:stock",
+      "evidence": {}
+    },
+    {
+      "ruleId": "RKM005",
+      "severity": "info",
+      "message": "Pattern contains heuristic dynamic segments; confirm normalization.",
+      "pattern": "session:{token}",
+      "evidence": {}
+    },
+    {
+      "ruleId": "RKM005",
+      "severity": "info",
+      "message": "Pattern contains heuristic dynamic segments; confirm normalization.",
+      "pattern": "user:{id}",
+      "evidence": {}
+    },
+    {
+      "ruleId": "RKM005",
+      "severity": "info",
+      "message": "Pattern contains heuristic dynamic segments; confirm normalization.",
+      "pattern": "user:{id}:orders",
+      "evidence": {}
+    },
+    {
+      "ruleId": "RKM005",
+      "severity": "info",
+      "message": "Pattern contains heuristic dynamic segments; confirm normalization.",
+      "pattern": "user:{id}:sessions",
+      "evidence": {}
+    },
+    {
+      "ruleId": "RKM005",
+      "severity": "info",
+      "message": "Pattern contains heuristic dynamic segments; confirm normalization.",
+      "pattern": "user:{id}:tokens",
+      "evidence": {}
+    },
+    {
+      "ruleId": "RKM009",
+      "severity": "info",
+      "message": "Namespace contains direct entity keys; document the stored base entity meaning.",
+      "pattern": "product:{id}",
+      "evidence": {}
+    },
+    {
+      "ruleId": "RKM009",
+      "severity": "info",
+      "message": "Namespace contains direct entity keys; document the stored base entity meaning.",
+      "pattern": "user:{id}",
+      "evidence": {}
+    }
+  ],
+  "recommendations": [
+    "Document the principal Redis key patterns in the owning application repository.",
+    "Prefer a consistent key form such as entity:{id}:resource.",
+    "Review this snapshot before Redis cleanup or naming refactors."
+  ]
+}
